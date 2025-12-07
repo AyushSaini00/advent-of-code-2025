@@ -5,6 +5,7 @@ First, you'd need to cd into a day directory. example: `cd day-1`
 
 ### TypeScript
 
+Using Node:
 ```bash
 cd ts
 yarn install
@@ -12,6 +13,13 @@ yarn dev
 
 # to run the tests
 yarn test
+```
+
+Using Bun:
+```bash
+cd ts
+bun install
+bun index.ts
 ```
 
 ### Go
