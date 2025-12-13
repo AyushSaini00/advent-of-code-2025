@@ -1,10 +1,6 @@
-"use strict";
-import fs from "node:fs";
+import { checkItem } from "./util.js";
 
-export function countRolls(filePath = "../input.txt") {
-  const fileContent: string = fs.readFileSync(filePath, "utf-8");
-  const lines = fileContent.split("\n");
-
+export function part1(lines: string[]) {
   const grid: string[][] = [];
   lines.forEach((line) => grid.push(line.split("")));
   let count = 0;
@@ -29,14 +25,3 @@ export function countRolls(filePath = "../input.txt") {
 
   return count;
 }
-
-export function checkItem(grid: string[][], r: number, c: number) {
-  const rowInbounds = 0 <= r && r < grid.length;
-  const colInbounds = 0 <= c && c < grid[0]!.length;
-  if (!rowInbounds || !colInbounds) return false;
-
-  if (grid[r]![c] !== "@") return false;
-  if (grid[r]![c] === "@") return true;
-}
-
-countRolls();

@@ -1,11 +1,6 @@
-"use strict";
-import fs from "node:fs";
-import { checkItem } from "./part-1.ts";
+import { checkItem } from "./util.js";
 
-export function totalRollsRemoved(filePath = "../input.txt") {
-  const fileContent: string = fs.readFileSync(filePath, "utf-8");
-  const lines = fileContent.split("\n");
-
+export function part2(lines: string[]) {
   const grid: string[][] = [];
   lines.forEach((line) => grid.push(line.split("")));
 
@@ -42,12 +37,10 @@ export function totalRollsRemoved(filePath = "../input.txt") {
     totalRolls += rolls;
     removedRollsPositions.forEach((position) => {
       const [r, c] = position.split(",").map(Number);
-      grid[r][c] = ".";
+      grid[r!]![c!] = ".";
     });
     removedRollsPositions = [];
   }
 
   return totalRolls;
 }
-
-totalRollsRemoved();
